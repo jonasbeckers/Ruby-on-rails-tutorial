@@ -3,7 +3,7 @@ The online course/book can be found [here](https://www.railstutorial.org/book)
 ## Finished chapters
 - [x] Chapter 1: From zero to deploy
 - [x] Chapter 2: A toy app
-- [ ] Chapter 3: Mostly static pages
+- [x] Chapter 3: Mostly static pages
 - [ ] Chapter 4: Rails-flavored Ruby
 - [ ] Chapter 5: Chapter 5: Filling in the layout
 - [ ] Chapter 6: Modeling users
