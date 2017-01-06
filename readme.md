@@ -7,7 +7,7 @@ The online course/book can be found [here](https://www.railstutorial.org/book)
 - [x] Chapter 4: Rails-flavored Ruby
 - [x] Chapter 5: Chapter 5: Filling in the layout
 - [x] Chapter 6: Modeling users
-- [ ] Chapter 7: Sign up
+- [x] Chapter 7: Sign up
 - [ ] Chapter 8: Basic login
 - [ ] Chapter 9: Advanced login
 - [ ] Chapter 10: Updating, showing and deleting users
