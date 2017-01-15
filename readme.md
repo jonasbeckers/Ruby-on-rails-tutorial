@@ -9,7 +9,7 @@ The online course/book can be found [here](https://www.railstutorial.org/book)
 - [x] Chapter 6: Modeling users
 - [x] Chapter 7: Sign up
 - [x] Chapter 8: Basic login
-- [ ] Chapter 9: Advanced login
+- [x] Chapter 9: Advanced login
 - [ ] Chapter 10: Updating, showing and deleting users
 - [ ] Chapter 11: Account activation
 - [ ] Chapter 12: Password reset
