@@ -11,7 +11,7 @@ The online course/book can be found [here](https://www.railstutorial.org/book)
 - [x] Chapter 8: Basic login
 - [x] Chapter 9: Advanced login
 - [x] Chapter 10: Updating, showing and deleting users
-- [ ] Chapter 11: Account activation
+- [x] Chapter 11: Account activation
 - [ ] Chapter 12: Password reset
 - [ ] Chapter 13: User microposts
 - [ ] Chapter 14: Following users
