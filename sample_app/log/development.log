@@ -4501,3 +4501,741 @@ Processing by UsersController#show as HTML
 Completed 200 OK in 55ms (Views: 52.3ms | ActiveRecord: 0.2ms)
 
 
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddActivationToUsers (20170116185259)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "users" ADD "activation_digest" varchar[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "activated" boolean DEFAULT 'f'[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "users" ADD "activated_at" datetime[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170116185259"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", :environment]]
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsers (20170104193639)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170104193639"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddIndexToUsersEmail (20170105144214)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mselect sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170105144214"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddPasswordDigestToUsers (20170105172256)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "users" ADD "password_digest" varchar[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170105172256"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddRememberDigestToUsers (20170110100442)
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "users" ADD "remember_digest" varchar[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170110100442"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddAdminToUsers (20170116141302)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "users" ADD "admin" boolean DEFAULT 'f'[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170116141302"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddActivationToUsers (20170116185259)
+  [1m[35m (0.4ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "users" ADD "activation_digest" varchar[0m
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "users" ADD "activated" boolean DEFAULT 'f'[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "users" ADD "activated_at" datetime[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170116185259"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", 2017-01-16 19:23:36 UTC], ["updated_at", 2017-01-16 19:23:36 UTC]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "admin", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Example User"], ["email", "example@railstutorial.org"], ["created_at", 2017-01-16 19:23:44 UTC], ["updated_at", 2017-01-16 19:23:44 UTC], ["password_digest", "$2a$10$o3XlBs0iTyAWm8Wg0eVlqObwF2zYC07z6IvL.s9KD8nMVwkU4U2iy"], ["admin", true], ["activation_digest", "$2a$10$geHjoj8WH9zQvRa5H0ccouz/g9H.aEFl9HSPllZH/nVTmgtw38xRe"], ["activated", true], ["activated_at", 2017-01-16 19:23:44 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-1@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Jonathon Hettinger V"], ["email", "example-1@railstutorial.org"], ["created_at", 2017-01-16 19:23:44 UTC], ["updated_at", 2017-01-16 19:23:44 UTC], ["password_digest", "$2a$10$P9JRSLXAnL7sXA2VYsxD3.QG/3llffhM9A5amwzQU/KuCot55fEV."], ["activation_digest", "$2a$10$7IsKrvCIBOl7PHvGy/JtPuIbKhXZwbegtjjb9d3inCHSseCjyN.6a"], ["activated", true], ["activated_at", 2017-01-16 19:23:44 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-2@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Laura Bahringer"], ["email", "example-2@railstutorial.org"], ["created_at", 2017-01-16 19:23:44 UTC], ["updated_at", 2017-01-16 19:23:44 UTC], ["password_digest", "$2a$10$kI1BDACxhHs2zcDE.rdelOzb7FcSEiyOgoBz1qFKoz4nGkUNVSLQq"], ["activation_digest", "$2a$10$0eNPkpJY0YUBjbZ9pWVTG.r0QYN/BUrPiQ/C5O5LGNeABQNBAYDWy"], ["activated", true], ["activated_at", 2017-01-16 19:23:44 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-3@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Furman Durgan"], ["email", "example-3@railstutorial.org"], ["created_at", 2017-01-16 19:23:45 UTC], ["updated_at", 2017-01-16 19:23:45 UTC], ["password_digest", "$2a$10$EwCqq810oiQsa8HO6liC5OfFWrNhKcEvztFbSCq.h0tg.RAh1q/my"], ["activation_digest", "$2a$10$zCY/XIKi6r1158USX9CLqOFHSYezNopaRjvmn9/0urGKw6Pf.mXK6"], ["activated", true], ["activated_at", 2017-01-16 19:23:44 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-4@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Cyrus Kirlin"], ["email", "example-4@railstutorial.org"], ["created_at", 2017-01-16 19:23:45 UTC], ["updated_at", 2017-01-16 19:23:45 UTC], ["password_digest", "$2a$10$tgzzYfSGuml1EhJONxEj2uXe1M6hZMVzAo8V4fL1y68./mhClkSTC"], ["activation_digest", "$2a$10$jH3EHOyVZCokcD7HgVKw1uk7Rcu517eQL/SrrTFNtA3yWU/6z0122"], ["activated", true], ["activated_at", 2017-01-16 19:23:45 UTC]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-5@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Hope Walker"], ["email", "example-5@railstutorial.org"], ["created_at", 2017-01-16 19:23:45 UTC], ["updated_at", 2017-01-16 19:23:45 UTC], ["password_digest", "$2a$10$qntRXS/WmebkqddX0vWCL.cWb024hjAlIwGk6T4aRyfIc12AiDMGa"], ["activation_digest", "$2a$10$xzPsBOVIYVRPGm88z6esr.B1e4ArwiPJ5LwfpUdGY9lh2UblXYQj."], ["activated", true], ["activated_at", 2017-01-16 19:23:45 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-6@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Lyla Bergnaum"], ["email", "example-6@railstutorial.org"], ["created_at", 2017-01-16 19:23:45 UTC], ["updated_at", 2017-01-16 19:23:45 UTC], ["password_digest", "$2a$10$iqsg.lKab9PYvkMots76Se13K57wxd1M.O39naho/a50wbBcugBjS"], ["activation_digest", "$2a$10$NLDJ.qV8AgZPTb9h27aWAead7ro26Tsy20A9GDjEDu7EBzCmJKg4K"], ["activated", true], ["activated_at", 2017-01-16 19:23:45 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-7@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Richmond Wehner IV"], ["email", "example-7@railstutorial.org"], ["created_at", 2017-01-16 19:23:45 UTC], ["updated_at", 2017-01-16 19:23:45 UTC], ["password_digest", "$2a$10$ozs.6E9Iz3kN6gT44A7HJuEkg/PnYlJwYZmkAO8eObc7ShKGySlGu"], ["activation_digest", "$2a$10$NhfC3YwpAkWVi6wnBxXYK.l3HFzVCWr782r8JXv0nzDv7u2xK8uFW"], ["activated", true], ["activated_at", 2017-01-16 19:23:45 UTC]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-8@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Abigail Bahringer MD"], ["email", "example-8@railstutorial.org"], ["created_at", 2017-01-16 19:23:45 UTC], ["updated_at", 2017-01-16 19:23:45 UTC], ["password_digest", "$2a$10$yW0NtDxVIrVq1abQz20FO.qjRd2qS7c317Ev9fACQLDV8WscjiOGm"], ["activation_digest", "$2a$10$JhOdHj4orgN9oyIz8OPNqOaASyMV9U3IN/VUdeBukLpK20g/jt1Wm"], ["activated", true], ["activated_at", 2017-01-16 19:23:45 UTC]]
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-9@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Abe Towne II"], ["email", "example-9@railstutorial.org"], ["created_at", 2017-01-16 19:23:45 UTC], ["updated_at", 2017-01-16 19:23:45 UTC], ["password_digest", "$2a$10$WcXFgZupCb1dl0I0pKnLLeoNweJNUFAqpUz/eFho7Hf.bIIzmfKlG"], ["activation_digest", "$2a$10$VSThY2SJHctRgMmErrsYMuuPB4cYnuAsCG/7j4nxW3TAk9bZS0qMa"], ["activated", true], ["activated_at", 2017-01-16 19:23:45 UTC]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-10@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Korey Kiehn"], ["email", "example-10@railstutorial.org"], ["created_at", 2017-01-16 19:23:46 UTC], ["updated_at", 2017-01-16 19:23:46 UTC], ["password_digest", "$2a$10$ZFRh8Q.bz59xZmvyEoqsauSoEY1Icr8s1i0PUp0MHsWRmuMt.Uawe"], ["activation_digest", "$2a$10$4tKHqDuZJfra.xWt276CquPUnbJSRUFNqGVYcZKvBtptsZJHYVfXe"], ["activated", true], ["activated_at", 2017-01-16 19:23:46 UTC]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-11@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Miss Adolph Monahan"], ["email", "example-11@railstutorial.org"], ["created_at", 2017-01-16 19:23:46 UTC], ["updated_at", 2017-01-16 19:23:46 UTC], ["password_digest", "$2a$10$SasQjLc.L8aXx3pjSLiYIuhrMgdtM42IWoLKhHAq3Y5ZX7z2xZOD."], ["activation_digest", "$2a$10$jdiZ7ad5xW/l.g/ubm3Vh.g4ZnTGKFF1PKXZhfAbK170iyV.1PC52"], ["activated", true], ["activated_at", 2017-01-16 19:23:46 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-12@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Francesco Johns"], ["email", "example-12@railstutorial.org"], ["created_at", 2017-01-16 19:23:46 UTC], ["updated_at", 2017-01-16 19:23:46 UTC], ["password_digest", "$2a$10$1CAF3IcQDa6uXtqhd8beSOy/Kdeq8AxaOL20sa6/dUx7vWDop3FiK"], ["activation_digest", "$2a$10$F9MXFJy86Z/c/ZgmrvthP.npgO0tOyr0/a/IWnvKGORnrNfgKLBVq"], ["activated", true], ["activated_at", 2017-01-16 19:23:46 UTC]]
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-13@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Marques Stoltenberg"], ["email", "example-13@railstutorial.org"], ["created_at", 2017-01-16 19:23:46 UTC], ["updated_at", 2017-01-16 19:23:46 UTC], ["password_digest", "$2a$10$SX28hmZfylo4fkF9eOvwVOWuCSIDg9RaiXCtc9L..bPAVEPFSJv1u"], ["activation_digest", "$2a$10$PowKEEKv5F4Cwzel6s0FtOrMVe9UkFhxubeJgitlUnTyHJg.SCopu"], ["activated", true], ["activated_at", 2017-01-16 19:23:46 UTC]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-14@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Mrs. Marcel Weber"], ["email", "example-14@railstutorial.org"], ["created_at", 2017-01-16 19:23:46 UTC], ["updated_at", 2017-01-16 19:23:46 UTC], ["password_digest", "$2a$10$MIBUc/sXrKOvEn5RjXs3n.CKw/FhmFOR1o6U2JQAsK5NVyAmXBT6a"], ["activation_digest", "$2a$10$Fr/oeb8S83RyUFGHhd7KmuJiMqD0isLyjdYAi0Yz9.mWjDBv63pBm"], ["activated", true], ["activated_at", 2017-01-16 19:23:46 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-15@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Dr. Parker Crist"], ["email", "example-15@railstutorial.org"], ["created_at", 2017-01-16 19:23:46 UTC], ["updated_at", 2017-01-16 19:23:46 UTC], ["password_digest", "$2a$10$j6jQ3GqX8TYj3Hz5fc5HEeyOVX35S567m0p7ypzvkUIrFRl0wfHlS"], ["activation_digest", "$2a$10$u66gmP67cMRnECqyFrm1aePnht7lwGHMsF7eCa4MXUd/vmYwalIQa"], ["activated", true], ["activated_at", 2017-01-16 19:23:46 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-16@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Lolita Flatley III"], ["email", "example-16@railstutorial.org"], ["created_at", 2017-01-16 19:23:47 UTC], ["updated_at", 2017-01-16 19:23:47 UTC], ["password_digest", "$2a$10$tXcFct7XSKuwA5a0JIQDjuY8VBIC1u.FOjlNXxA4l2.l7AxWI4AIm"], ["activation_digest", "$2a$10$iVdH5m6s7Am0ZguLOFRgb.9ggH41JQ4wF/d.1ktnUsUxpG7DP4.sS"], ["activated", true], ["activated_at", 2017-01-16 19:23:46 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-17@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Felipe Hilpert II"], ["email", "example-17@railstutorial.org"], ["created_at", 2017-01-16 19:23:47 UTC], ["updated_at", 2017-01-16 19:23:47 UTC], ["password_digest", "$2a$10$6TxVijVYLJ/ft4oeGHqZoerE4CO6cvaBgXj/aLWgklG7kvgIoy5YS"], ["activation_digest", "$2a$10$x0aKY1qrRYYRXtSPMMeq4.EsYXn7E8/8Rq5oYTNQvImGyhJrvax.G"], ["activated", true], ["activated_at", 2017-01-16 19:23:47 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-18@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Robb Lueilwitz"], ["email", "example-18@railstutorial.org"], ["created_at", 2017-01-16 19:23:47 UTC], ["updated_at", 2017-01-16 19:23:47 UTC], ["password_digest", "$2a$10$5J5Tq9Rdv3InoibN/wo7t.WhID6oDXI/9QESjq00nob6G5CCtdiam"], ["activation_digest", "$2a$10$SxKz6Bhl.XV5Wcq6IbElx.h7Ub50bBtOwlb3Yo7EURx73jUig3o5."], ["activated", true], ["activated_at", 2017-01-16 19:23:47 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-19@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Jamel Mante DVM"], ["email", "example-19@railstutorial.org"], ["created_at", 2017-01-16 19:23:47 UTC], ["updated_at", 2017-01-16 19:23:47 UTC], ["password_digest", "$2a$10$7lLm7ojPWgehgaKmdyrON.8OIOxQnfhHlQsP5gP.1Llz5LPNxC6.K"], ["activation_digest", "$2a$10$Dgt1NL6i5VpYK.TcxCpYJOHKC3HVHtsy3omhHPnCRx82L09X/M7j6"], ["activated", true], ["activated_at", 2017-01-16 19:23:47 UTC]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-20@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Miss Lou Bruen"], ["email", "example-20@railstutorial.org"], ["created_at", 2017-01-16 19:23:47 UTC], ["updated_at", 2017-01-16 19:23:47 UTC], ["password_digest", "$2a$10$UDYqiSCw96vtnJ7pnX08.OB7G7QUS6uWR.vGdlUN4Me8v0wcY1G2W"], ["activation_digest", "$2a$10$8Gk9h1QJ1pDzHrtXQlilfOO06P8jgmmvE93mhNf1lgJ/50GE85pBG"], ["activated", true], ["activated_at", 2017-01-16 19:23:47 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-21@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Elmira Johnson IV"], ["email", "example-21@railstutorial.org"], ["created_at", 2017-01-16 19:23:47 UTC], ["updated_at", 2017-01-16 19:23:47 UTC], ["password_digest", "$2a$10$3Pp/JX1oV104pZjvky9mouw7c7oUTaUXChg4DEr.TEgRG6m1ngu4i"], ["activation_digest", "$2a$10$esWxx1dCGFDkA.P2CUIlbOnSIAtpABC0pTpVTrYsDJO/AXhfIzFIa"], ["activated", true], ["activated_at", 2017-01-16 19:23:47 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-22@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Dr. Walker Kuhic"], ["email", "example-22@railstutorial.org"], ["created_at", 2017-01-16 19:23:47 UTC], ["updated_at", 2017-01-16 19:23:47 UTC], ["password_digest", "$2a$10$9z4lUEfM05mgeovuADcZeuUIaro6SXVEWSNpfUgBccAIZkG6zFF.y"], ["activation_digest", "$2a$10$QxGuqNtE8htU646UyLRqtOZjTd6VKy4dKeKpqVpm375yfjZBhz56K"], ["activated", true], ["activated_at", 2017-01-16 19:23:47 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-23@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Jamir Swaniawski"], ["email", "example-23@railstutorial.org"], ["created_at", 2017-01-16 19:23:48 UTC], ["updated_at", 2017-01-16 19:23:48 UTC], ["password_digest", "$2a$10$p2G90dWIGCFUy8Hb0MFgd.X8kWgAJHSAk.Ax152S/cHTAqMXfw8O6"], ["activation_digest", "$2a$10$PmBGq98FLJJc4VO9WStUw.CgMAkDDzdVkjhKkzKQJtef5QRWizBTy"], ["activated", true], ["activated_at", 2017-01-16 19:23:48 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-24@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Ashley Huel"], ["email", "example-24@railstutorial.org"], ["created_at", 2017-01-16 19:23:48 UTC], ["updated_at", 2017-01-16 19:23:48 UTC], ["password_digest", "$2a$10$HRI83F/6Ino.i9Sx.ZNkNesNqLIg4tZA.FHqYTnkGkgiuuftGDM2W"], ["activation_digest", "$2a$10$slNeZZjYqWitcgXdj3WUC./amhZtwN8GneRzFCovOxxM0BU5BYq7C"], ["activated", true], ["activated_at", 2017-01-16 19:23:48 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-25@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Dr. Logan Moen"], ["email", "example-25@railstutorial.org"], ["created_at", 2017-01-16 19:23:48 UTC], ["updated_at", 2017-01-16 19:23:48 UTC], ["password_digest", "$2a$10$ZQAkUrFXXj61e/.YkZ01fOrbd.ePKefuabSAg/xylK0G6MzOGI0Sm"], ["activation_digest", "$2a$10$nvzVxf2sYmK.LoVnT2yFzOGkRuplGOSNW/rKhLtS/ZBDC6cn9oZaC"], ["activated", true], ["activated_at", 2017-01-16 19:23:48 UTC]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-26@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Emilio Blanda"], ["email", "example-26@railstutorial.org"], ["created_at", 2017-01-16 19:23:48 UTC], ["updated_at", 2017-01-16 19:23:48 UTC], ["password_digest", "$2a$10$Elryoj1rZSzPaEKuU46Fn.3bH6lhlOax8QGJadQBEf78qXDZ7.YkK"], ["activation_digest", "$2a$10$IxcM7OENyAemgNMXOEIAbenKhYX3pBuD2HyhMIG4evqtKvuc9sNn6"], ["activated", true], ["activated_at", 2017-01-16 19:23:48 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-27@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Elouise Goldner"], ["email", "example-27@railstutorial.org"], ["created_at", 2017-01-16 19:23:48 UTC], ["updated_at", 2017-01-16 19:23:48 UTC], ["password_digest", "$2a$10$a2L.TJ05g.67SJB9Y/eO6eYt3N.4mgWgBNBmLq/vUsbuqkGOXSJzq"], ["activation_digest", "$2a$10$KSiW4X7kTQfBy5m/2u/DlO3xN..Tz41hg2oUq5CGzLciCIhkfKctW"], ["activated", true], ["activated_at", 2017-01-16 19:23:48 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-28@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Donato McGlynn III"], ["email", "example-28@railstutorial.org"], ["created_at", 2017-01-16 19:23:48 UTC], ["updated_at", 2017-01-16 19:23:48 UTC], ["password_digest", "$2a$10$EohHPGGy5ZHgo53sUvyx5Ofe7rx1kRvIcpGcLbuEiiQyspehyGI/u"], ["activation_digest", "$2a$10$32YHmr2NnuMeyii8vrnat.laC58JfYOiuzGBXQQmGnMXMwuYQm8K2"], ["activated", true], ["activated_at", 2017-01-16 19:23:48 UTC]]
+  [1m[35m (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-29@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Ms. Alta Konopelski"], ["email", "example-29@railstutorial.org"], ["created_at", 2017-01-16 19:23:49 UTC], ["updated_at", 2017-01-16 19:23:49 UTC], ["password_digest", "$2a$10$7w2nuWkxIJ7B7gToRX0dbu52k2Ckjg1yV7VxbX0P1xLz7E8NTSoFa"], ["activation_digest", "$2a$10$aZEa1zWnu1SvgWtZmZg10.iHFvlOuPXltOzVouWXO2FTpRFqgN4SK"], ["activated", true], ["activated_at", 2017-01-16 19:23:48 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-30@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Murphy Jerde"], ["email", "example-30@railstutorial.org"], ["created_at", 2017-01-16 19:23:49 UTC], ["updated_at", 2017-01-16 19:23:49 UTC], ["password_digest", "$2a$10$e8op.ENJngIzuOW/S35TZeLertE.vhnAGbhdw/rnFh/CT.uQZ1KRG"], ["activation_digest", "$2a$10$CMkdTjDBpHgkJk/D6doxies/fdNMQoMMD07NUutfyPXebeMm9wehK"], ["activated", true], ["activated_at", 2017-01-16 19:23:49 UTC]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-31@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Dana Mayer"], ["email", "example-31@railstutorial.org"], ["created_at", 2017-01-16 19:23:49 UTC], ["updated_at", 2017-01-16 19:23:49 UTC], ["password_digest", "$2a$10$QZFMhdvZJ4QCaxSbvTiMyOCW4rc8cCT0LW1MEqERIbx8tX.idFqam"], ["activation_digest", "$2a$10$zgPZ.nwNBKVoN12Dz/AmbumxzRU9.O6WNPv.Vi1iwh0N110LN.W3K"], ["activated", true], ["activated_at", 2017-01-16 19:23:49 UTC]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-32@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Allie Weimann"], ["email", "example-32@railstutorial.org"], ["created_at", 2017-01-16 19:23:49 UTC], ["updated_at", 2017-01-16 19:23:49 UTC], ["password_digest", "$2a$10$lg9uLTr08yYLt2axdPiD/OPESfdZaK3D/OyaZWzFsA2293AdFLNTC"], ["activation_digest", "$2a$10$vqYiMuyTyoa0oG5Bg9FxeezUnJXw0Bh5WXSvMCYFEv4PpHNjDfgyW"], ["activated", true], ["activated_at", 2017-01-16 19:23:49 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-33@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Mr. Alvina Lubowitz"], ["email", "example-33@railstutorial.org"], ["created_at", 2017-01-16 19:23:49 UTC], ["updated_at", 2017-01-16 19:23:49 UTC], ["password_digest", "$2a$10$fO1r87R//bbyxkLBsxh4s.HRE22NRJBykZLrYROtjr96P.l0m2z6."], ["activation_digest", "$2a$10$YlNd6I82Kq9iQxjFzQvqHOuh2DRrAeyhRmevqda/skqUcwFnsYZFK"], ["activated", true], ["activated_at", 2017-01-16 19:23:49 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-34@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Ellsworth Raynor"], ["email", "example-34@railstutorial.org"], ["created_at", 2017-01-16 19:23:49 UTC], ["updated_at", 2017-01-16 19:23:49 UTC], ["password_digest", "$2a$10$TV21LDDVh7q6wYXbWl5nTeVZl2RMDdbjo6qHxHrBx5B7miLuvSn6K"], ["activation_digest", "$2a$10$Xj2ptq0rzFqlPNczZVdxC./iTlFoVaThmu/4KgwkaLLVWkOCtR1fi"], ["activated", true], ["activated_at", 2017-01-16 19:23:49 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-35@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Maryjane Wisozk"], ["email", "example-35@railstutorial.org"], ["created_at", 2017-01-16 19:23:49 UTC], ["updated_at", 2017-01-16 19:23:49 UTC], ["password_digest", "$2a$10$/lNGCaUlR9CwKQIiGX/z1uawoBot8SCSTJafmNqyGkF9trqiRaKR6"], ["activation_digest", "$2a$10$stspB2YNriFu8OAq6gyGsunV5cbfpXXRX8vm4VaKh/h/LWPzH3PD6"], ["activated", true], ["activated_at", 2017-01-16 19:23:49 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-36@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Lia Schultz"], ["email", "example-36@railstutorial.org"], ["created_at", 2017-01-16 19:23:50 UTC], ["updated_at", 2017-01-16 19:23:50 UTC], ["password_digest", "$2a$10$tGlZcDPE7XCQm4SILOYjQeHNf9psUY4kxnlMSybB2l/c4ecqql/7i"], ["activation_digest", "$2a$10$u6jOKbBawMKmyqbfaIK6FOagFgBuzX4T1bW0TIYiXaxSzgTqPv1wu"], ["activated", true], ["activated_at", 2017-01-16 19:23:49 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-37@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Isidro Hand"], ["email", "example-37@railstutorial.org"], ["created_at", 2017-01-16 19:23:50 UTC], ["updated_at", 2017-01-16 19:23:50 UTC], ["password_digest", "$2a$10$1evuNfEbYdqxp5vM0PPKaeAVSzbJZ1xJdEmnntBpvFhaGIbvjPzyy"], ["activation_digest", "$2a$10$8ETz2d.Vj8HDZhAMScuuY.TpWwN4ti0J.6QrFkW1EZ9QZo0V/P8l6"], ["activated", true], ["activated_at", 2017-01-16 19:23:50 UTC]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-38@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (1.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Mohammad Sauer Sr."], ["email", "example-38@railstutorial.org"], ["created_at", 2017-01-16 19:23:50 UTC], ["updated_at", 2017-01-16 19:23:50 UTC], ["password_digest", "$2a$10$JXaoCWCCFiBbzXQ.cuKGkunqmG//sLYJ/iBBIWc0oI0yziSi.nrGy"], ["activation_digest", "$2a$10$ZFhXkEgaPXa28cPA2J80PODOcGMiNDxamcwwlg0IsWvmWHXxRGq2O"], ["activated", true], ["activated_at", 2017-01-16 19:23:50 UTC]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-39@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Josephine Willms II"], ["email", "example-39@railstutorial.org"], ["created_at", 2017-01-16 19:23:50 UTC], ["updated_at", 2017-01-16 19:23:50 UTC], ["password_digest", "$2a$10$gXKDDSrxQrxJM0EB2PPJPOEol/u7SJz/VQFME7yJNjzotx5li.3sW"], ["activation_digest", "$2a$10$0tLhaFUHyXUKrh5RmJZlOezDcqyBnrPiOKbknRrjaiHr8AhF7Azyy"], ["activated", true], ["activated_at", 2017-01-16 19:23:50 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-40@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Zora Kuhic IV"], ["email", "example-40@railstutorial.org"], ["created_at", 2017-01-16 19:23:50 UTC], ["updated_at", 2017-01-16 19:23:50 UTC], ["password_digest", "$2a$10$JTK08bEGZznHnBoOxJvKIea2.3UVPYUGfTQtIUILAoK7mRDlN2f0y"], ["activation_digest", "$2a$10$401o7dtYLNkEr8/s8wWf9eohgx9flLFTERXKJhAsu4.1vjNTT4bGm"], ["activated", true], ["activated_at", 2017-01-16 19:23:50 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-41@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Melvina King"], ["email", "example-41@railstutorial.org"], ["created_at", 2017-01-16 19:23:50 UTC], ["updated_at", 2017-01-16 19:23:50 UTC], ["password_digest", "$2a$10$rlLtq09PJuYCBm66sXv0cuaDbksaqkAh9PUyWFmF0o3fygonbzPXW"], ["activation_digest", "$2a$10$CEuOfOw507NM0gqzkNhiMuW5.bIlYno7lh.c4VfYnRAvHEEV4Di0K"], ["activated", true], ["activated_at", 2017-01-16 19:23:50 UTC]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-42@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Damaris Schuppe"], ["email", "example-42@railstutorial.org"], ["created_at", 2017-01-16 19:23:50 UTC], ["updated_at", 2017-01-16 19:23:50 UTC], ["password_digest", "$2a$10$E0dQ.ewF54SQ8mXeml2ubOvtUi6aJv5a1Bq2ep9UZkOUKGWlFrDdq"], ["activation_digest", "$2a$10$x4Hmx/9Td.oMKzFF6GOsLeC/NygThDznYZ9SwJmnV7hitqDXUysde"], ["activated", true], ["activated_at", 2017-01-16 19:23:50 UTC]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-43@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Cortez Hilpert"], ["email", "example-43@railstutorial.org"], ["created_at", 2017-01-16 19:23:51 UTC], ["updated_at", 2017-01-16 19:23:51 UTC], ["password_digest", "$2a$10$rphlp5gEAR7t/zgmgMEw6.o4tVF3iJEA8SUSzdQ2ymLRN212xJJ.y"], ["activation_digest", "$2a$10$Hl5MaryE4eCeVJ0omzm4l.N22bm6Bhn.gZH2vESdqZit6QL9MOvfi"], ["activated", true], ["activated_at", 2017-01-16 19:23:51 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-44@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Holden Rogahn"], ["email", "example-44@railstutorial.org"], ["created_at", 2017-01-16 19:23:51 UTC], ["updated_at", 2017-01-16 19:23:51 UTC], ["password_digest", "$2a$10$vdJMdhf2dT77AvHi/Rm40uw/7La92PL94M1fsQqJdXVD52C1PWjDe"], ["activation_digest", "$2a$10$cYpp5jafLxNc45EflyB7xu14WFxBapUk02DTlRLkjugAFl/1QW5ce"], ["activated", true], ["activated_at", 2017-01-16 19:23:51 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-45@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Vincenzo Welch"], ["email", "example-45@railstutorial.org"], ["created_at", 2017-01-16 19:23:51 UTC], ["updated_at", 2017-01-16 19:23:51 UTC], ["password_digest", "$2a$10$bgMTUp8e/obPuWU9CL5ycO2T7AxpMSlx7jRJllYA.WnGO/.MCHppS"], ["activation_digest", "$2a$10$ekKgEkz1r8YlqqEAAgCFced6PVOmNXCccSupZKbY/SkhMWjzEl.NW"], ["activated", true], ["activated_at", 2017-01-16 19:23:51 UTC]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-46@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Ms. Bella Kiehn"], ["email", "example-46@railstutorial.org"], ["created_at", 2017-01-16 19:23:51 UTC], ["updated_at", 2017-01-16 19:23:51 UTC], ["password_digest", "$2a$10$24tISqAoaBME.AO0iJifiuIb6xGqYR16DO4VK2JSyniXIAXSfDFzK"], ["activation_digest", "$2a$10$mXQUE6ITwCFjvEn22NrlMeXNYmVargPvfMuPNBdvmN3MskMXJn3ke"], ["activated", true], ["activated_at", 2017-01-16 19:23:51 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-47@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Winfield Haag"], ["email", "example-47@railstutorial.org"], ["created_at", 2017-01-16 19:23:51 UTC], ["updated_at", 2017-01-16 19:23:51 UTC], ["password_digest", "$2a$10$OhCZlnaajEg9.rw4Z8wPt./Sti8AfHVzCdSF8vp94DfJG.u87Y2e2"], ["activation_digest", "$2a$10$g3X5agRJ/faHro0ae8wune6RftizBUg6S2z53I8ZCOvHGcIiYkGDW"], ["activated", true], ["activated_at", 2017-01-16 19:23:51 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-48@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Dandre Osinski I"], ["email", "example-48@railstutorial.org"], ["created_at", 2017-01-16 19:23:51 UTC], ["updated_at", 2017-01-16 19:23:51 UTC], ["password_digest", "$2a$10$ZuiNzqZQcNlHYHK4JKTwLO9aT3VV3ozKbNBfNPchIgpgekFfzmNra"], ["activation_digest", "$2a$10$UijNx13IsLrqsajVU.g/OeWvFW4AvJO.ZZLcJNl5hfPWDFKTz5L3C"], ["activated", true], ["activated_at", 2017-01-16 19:23:51 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-49@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Jody Kertzmann"], ["email", "example-49@railstutorial.org"], ["created_at", 2017-01-16 19:23:52 UTC], ["updated_at", 2017-01-16 19:23:52 UTC], ["password_digest", "$2a$10$duvlWh.MabEYnutAJWtt9eedfNIVJfTF3kk4Ragm3EBfusRhUsuCC"], ["activation_digest", "$2a$10$bauEJJpQadx4X4bC.K/1cOYBtFAWG0HV.22bQHuEaxsS9W3RdUjEW"], ["activated", true], ["activated_at", 2017-01-16 19:23:51 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-50@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Ignacio Nikolaus"], ["email", "example-50@railstutorial.org"], ["created_at", 2017-01-16 19:23:52 UTC], ["updated_at", 2017-01-16 19:23:52 UTC], ["password_digest", "$2a$10$rsmPx.ptS5ufihSzZ5Ks1eUlemPGdgm6hhgfNi3wY7dVh6ckM5ZGG"], ["activation_digest", "$2a$10$kFfBvlqQ.pwHKPNuh7z4UeKuD/BLGbk4e5Jr1yrJB8sA/3Gz3VPre"], ["activated", true], ["activated_at", 2017-01-16 19:23:52 UTC]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-51@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Eloy Hirthe"], ["email", "example-51@railstutorial.org"], ["created_at", 2017-01-16 19:23:52 UTC], ["updated_at", 2017-01-16 19:23:52 UTC], ["password_digest", "$2a$10$E1trYNQdpqjezMFida5am.iBLn8rNddogImnaVnZ33szCm9yphUcO"], ["activation_digest", "$2a$10$bnTafv2s0YCFlP5EQtRnPOu3GUJwBPaN9yZIF151nki/p7yCMJ4Z2"], ["activated", true], ["activated_at", 2017-01-16 19:23:52 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-52@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Savannah Beatty"], ["email", "example-52@railstutorial.org"], ["created_at", 2017-01-16 19:23:52 UTC], ["updated_at", 2017-01-16 19:23:52 UTC], ["password_digest", "$2a$10$0ScmFFI.QH.olC5.DfKWkeVrjDiek25pAuKuNdUdbKRfLmZvF.JA."], ["activation_digest", "$2a$10$6fqtns03ETjNvQ1XDnlTm.rqt4UDHLwKdU2R631jP9kD7vYDSjV2K"], ["activated", true], ["activated_at", 2017-01-16 19:23:52 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-53@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Miss Keshaun Stoltenberg"], ["email", "example-53@railstutorial.org"], ["created_at", 2017-01-16 19:23:52 UTC], ["updated_at", 2017-01-16 19:23:52 UTC], ["password_digest", "$2a$10$Zsa1Y9LhPCNp5snz8JQJSungLKZ0j/Z6jlrkrKM4yjMp.B1yyq6OW"], ["activation_digest", "$2a$10$bPiurptPRbwO3./bnz1VwO2IXQqPlnBI5pC11YwL9DROSOATFt/8m"], ["activated", true], ["activated_at", 2017-01-16 19:23:52 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-54@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Marjory Muller"], ["email", "example-54@railstutorial.org"], ["created_at", 2017-01-16 19:23:52 UTC], ["updated_at", 2017-01-16 19:23:52 UTC], ["password_digest", "$2a$10$z8ohd0yqptcMQghMsEZHZOUXBh3RebEOwRKYahwFCnKBjqkGSUqcK"], ["activation_digest", "$2a$10$Gl7wPKqsQwiMWnpPVUt/juJVOBUzDzUEJWwhibEQfYcV8.QDwHISi"], ["activated", true], ["activated_at", 2017-01-16 19:23:52 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-55@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Stan Lowe DVM"], ["email", "example-55@railstutorial.org"], ["created_at", 2017-01-16 19:23:52 UTC], ["updated_at", 2017-01-16 19:23:52 UTC], ["password_digest", "$2a$10$UNBrA54H1x65cvKvmg0cZOQu7R9Y51lK0wFMUrN0t6.nAa2w.5Otu"], ["activation_digest", "$2a$10$e650Wvg/q4WDPi2AoLcjyO1EycRFNNzZ1qAsAyNKdOyjvxV1eCJvm"], ["activated", true], ["activated_at", 2017-01-16 19:23:52 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-56@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Molly Muller"], ["email", "example-56@railstutorial.org"], ["created_at", 2017-01-16 19:23:53 UTC], ["updated_at", 2017-01-16 19:23:53 UTC], ["password_digest", "$2a$10$28KcakqSMdiMDKGT2gG7HuMq8jpO45e8GFqF6byMliD9QIgLoqF7K"], ["activation_digest", "$2a$10$T9/3x7qwptG3lmRtgAkn2es8PhH6Q/6Aj9R3nmhgU.Yl1PAtp8PFe"], ["activated", true], ["activated_at", 2017-01-16 19:23:53 UTC]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-57@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Mr. Danial Rempel"], ["email", "example-57@railstutorial.org"], ["created_at", 2017-01-16 19:23:53 UTC], ["updated_at", 2017-01-16 19:23:53 UTC], ["password_digest", "$2a$10$kprvqyjjkuoR4QK0hprcC.4us1zUsYzorZ3/aaiDikqf.vfvFNRYS"], ["activation_digest", "$2a$10$GpWsmcyHPnF/aEnZZy9KOeFVrOAZbq2Pkl6YL3iEX8iLnu66ekFvu"], ["activated", true], ["activated_at", 2017-01-16 19:23:53 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-58@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Gertrude Cole Jr."], ["email", "example-58@railstutorial.org"], ["created_at", 2017-01-16 19:23:53 UTC], ["updated_at", 2017-01-16 19:23:53 UTC], ["password_digest", "$2a$10$/Q6g6nMghbcGdxr6s5x7Ou97YEt1fDVwxwXcDxVfAZp.NQUzSVrc."], ["activation_digest", "$2a$10$LoSLcsKgrklsG9k3iO5vy..RHWiICAqZnX9V1qr3Z/EQfLD1ShqCG"], ["activated", true], ["activated_at", 2017-01-16 19:23:53 UTC]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-59@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Devyn Feeney I"], ["email", "example-59@railstutorial.org"], ["created_at", 2017-01-16 19:23:53 UTC], ["updated_at", 2017-01-16 19:23:53 UTC], ["password_digest", "$2a$10$NZPVaYz55O5D/ftcL/TFV.QKB6f6iUyDSa4P2OwYsrbRlZaoqNVmG"], ["activation_digest", "$2a$10$.YTQ9MMnyRGaG9FQaP6EkucwfySrs7OrbGCxawy3Zs2vXeh8qo3g."], ["activated", true], ["activated_at", 2017-01-16 19:23:53 UTC]]
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-60@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Marlene Kuphal Sr."], ["email", "example-60@railstutorial.org"], ["created_at", 2017-01-16 19:23:53 UTC], ["updated_at", 2017-01-16 19:23:53 UTC], ["password_digest", "$2a$10$mwcqbRLGFlX9GV/HbT6bEeQVJnXHc6QFfWtGTDEyqNioSzzByfDY2"], ["activation_digest", "$2a$10$Dd6SKnJFg8PE42BuotY.Au70wXOXpw5KVoFA06NvdZF9BbKEyiB7e"], ["activated", true], ["activated_at", 2017-01-16 19:23:53 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-61@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Miss Celia Cartwright"], ["email", "example-61@railstutorial.org"], ["created_at", 2017-01-16 19:23:53 UTC], ["updated_at", 2017-01-16 19:23:53 UTC], ["password_digest", "$2a$10$MHvjV2M6gMF3NviVQQ0MM.CiomTDJQ0Jkh3MdQD7UgLiOorqJkZsG"], ["activation_digest", "$2a$10$KeR/95cjpdmwVzotUuWu9e/f3cClFhLqT6NaRI1C8fvhqjYKO6Qdu"], ["activated", true], ["activated_at", 2017-01-16 19:23:53 UTC]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-62@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Rae Beatty"], ["email", "example-62@railstutorial.org"], ["created_at", 2017-01-16 19:23:54 UTC], ["updated_at", 2017-01-16 19:23:54 UTC], ["password_digest", "$2a$10$eLy4fZfYCvmNrP41VlJczeMh6dXjIJo6Aw3WndIo5YG8hWMmfcNJ6"], ["activation_digest", "$2a$10$WbzpW/L7XeLUDmRLp7bC3eS88nMmqYzRdAYV2ZZuKAayi0MOqmj7m"], ["activated", true], ["activated_at", 2017-01-16 19:23:53 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-63@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Vaughn Schinner I"], ["email", "example-63@railstutorial.org"], ["created_at", 2017-01-16 19:23:54 UTC], ["updated_at", 2017-01-16 19:23:54 UTC], ["password_digest", "$2a$10$BD.JypNeP0ohT3eQC52UNujpRDKhoggln1PrMHXLb7MMA1KrgwocS"], ["activation_digest", "$2a$10$D71QTAqP3Sq/PfWN0fKHcuJgwkQqgZVDB.X7ZiKk9uFqqFc1vUQNW"], ["activated", true], ["activated_at", 2017-01-16 19:23:54 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-64@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Coralie Morar"], ["email", "example-64@railstutorial.org"], ["created_at", 2017-01-16 19:23:54 UTC], ["updated_at", 2017-01-16 19:23:54 UTC], ["password_digest", "$2a$10$kieuJr9DYvX1XtOtGHFLN.U9SLwfG3JUUUVj6CzhGWG5bR1ZgxoEi"], ["activation_digest", "$2a$10$syaC/BE9YKXPVJgz5ozYauWUN/NKeKhB1aUdss0SyDCJjsIVqJ3Fi"], ["activated", true], ["activated_at", 2017-01-16 19:23:54 UTC]]
+  [1m[35m (33.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-65@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Myrtis Yundt"], ["email", "example-65@railstutorial.org"], ["created_at", 2017-01-16 19:23:54 UTC], ["updated_at", 2017-01-16 19:23:54 UTC], ["password_digest", "$2a$10$FkPpmL2fFkOqHk9FkVH9OOe8dHhlvW35HPPTDfrfQ4jAUJg1cGMVK"], ["activation_digest", "$2a$10$hA2cqKmi9Oo9Ubhp9J2uieZm1orZBWB4hiic.OZSwVe.jG6iEMvVe"], ["activated", true], ["activated_at", 2017-01-16 19:23:54 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-66@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Paula Feil"], ["email", "example-66@railstutorial.org"], ["created_at", 2017-01-16 19:23:54 UTC], ["updated_at", 2017-01-16 19:23:54 UTC], ["password_digest", "$2a$10$FQHHvHgpqeR0e7i7EWtg.uHj82nRV8ZTrU2cHlDHyTYfLb1OOsPUi"], ["activation_digest", "$2a$10$G99oDbjFyWMd8Y59.Q.IWe.I3.EHJ0NqN7utUgERxn2F4OdoKHPnu"], ["activated", true], ["activated_at", 2017-01-16 19:23:54 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-67@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Raquel Herman"], ["email", "example-67@railstutorial.org"], ["created_at", 2017-01-16 19:23:54 UTC], ["updated_at", 2017-01-16 19:23:54 UTC], ["password_digest", "$2a$10$kK98MJFpxv3j9HdTVk4/MOHTO5i6hTMu6gdDOZWbMm7k/XPofQLqO"], ["activation_digest", "$2a$10$FKHgrH2KV3friMwsjMl8XeqHYz6ZeCkTItT/KLh78Re82cfeBbrtq"], ["activated", true], ["activated_at", 2017-01-16 19:23:54 UTC]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-68@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Mr. Santa Altenwerth"], ["email", "example-68@railstutorial.org"], ["created_at", 2017-01-16 19:23:54 UTC], ["updated_at", 2017-01-16 19:23:54 UTC], ["password_digest", "$2a$10$kWgYxj/bMzO3PN66uOHBX.iCRiDn8MIlBdlvXjG2Sc5dWo3SWcGca"], ["activation_digest", "$2a$10$8bpf/f7cVwzBmoLGkYR90ugdqcyt35d0o3Ijl5FrylPz2kDUbFl92"], ["activated", true], ["activated_at", 2017-01-16 19:23:54 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-69@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Korbin Sporer"], ["email", "example-69@railstutorial.org"], ["created_at", 2017-01-16 19:23:55 UTC], ["updated_at", 2017-01-16 19:23:55 UTC], ["password_digest", "$2a$10$1qnaJXecnMBwi6MY102E2.hFKSj1py8AJdxRspWPL3wDlB94RH8ue"], ["activation_digest", "$2a$10$oofMDoQxGDBBaSAEUHcApedMFxcEsz3W8/w8kl3Tqw.xNH.1c02z6"], ["activated", true], ["activated_at", 2017-01-16 19:23:55 UTC]]
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-70@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Enrique Feeney"], ["email", "example-70@railstutorial.org"], ["created_at", 2017-01-16 19:23:55 UTC], ["updated_at", 2017-01-16 19:23:55 UTC], ["password_digest", "$2a$10$lelXo1vU8Z4OyLeiBuy/qO2hX4pG.vCoAckOUFEK56y8IOzNzU1Zm"], ["activation_digest", "$2a$10$XEQMj.gA48vD.hxaLjqpE.f7vPgE.G/bIw8TkZSq04rzVBjMAkeYS"], ["activated", true], ["activated_at", 2017-01-16 19:23:55 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-71@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Rey Lind Jr."], ["email", "example-71@railstutorial.org"], ["created_at", 2017-01-16 19:23:55 UTC], ["updated_at", 2017-01-16 19:23:55 UTC], ["password_digest", "$2a$10$aPIdg55VajHz1EqWCkBTxOpJasSPoSY2fapLP.hdqv4bHNEmpLTMS"], ["activation_digest", "$2a$10$2dyeWDzwxSmD2aVr9j0VruxXQVXh99xmy8ICdSiiqTLcYBC5tcZse"], ["activated", true], ["activated_at", 2017-01-16 19:23:55 UTC]]
+  [1m[35m (61.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-72@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Isadore Grimes"], ["email", "example-72@railstutorial.org"], ["created_at", 2017-01-16 19:23:55 UTC], ["updated_at", 2017-01-16 19:23:55 UTC], ["password_digest", "$2a$10$2wlYQj65DrZyL8SbhCJNluCt7AdnXqNxYVlvKH2oz4mJVsiA0CGr6"], ["activation_digest", "$2a$10$0bGRa/LJHeVNqNPCbtHaTuXBCASu.T5JriSPg/DMcV1s5U83DN.Tq"], ["activated", true], ["activated_at", 2017-01-16 19:23:55 UTC]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-73@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Allen Kuhic"], ["email", "example-73@railstutorial.org"], ["created_at", 2017-01-16 19:23:55 UTC], ["updated_at", 2017-01-16 19:23:55 UTC], ["password_digest", "$2a$10$SgWAdMfnpMOUCwiDOg4X4uJernZay4wdg0YUDllx1.qz65OqV2sMq"], ["activation_digest", "$2a$10$pwMKYPHt1EHSygj4MbNqEOsK5/aiyZaK3F..Oyrf/iS9aRziqXxm2"], ["activated", true], ["activated_at", 2017-01-16 19:23:55 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-74@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Jettie Zboncak"], ["email", "example-74@railstutorial.org"], ["created_at", 2017-01-16 19:23:55 UTC], ["updated_at", 2017-01-16 19:23:55 UTC], ["password_digest", "$2a$10$G/.dDjVkNiEGtrVp4G.QdOknVSCci2NlWo/Vs.UXp4Qb5gPl8WYm."], ["activation_digest", "$2a$10$t3kCOzkKqkDMYNevDF37G.DUHfcx1XbmmDTQWY8I/6i8GQEnrPVKO"], ["activated", true], ["activated_at", 2017-01-16 19:23:55 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-75@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Christy Volkman"], ["email", "example-75@railstutorial.org"], ["created_at", 2017-01-16 19:23:56 UTC], ["updated_at", 2017-01-16 19:23:56 UTC], ["password_digest", "$2a$10$bzAzCQOClP2YGgJYcqxBjO2F4JhXsqkfyDOa35OE51pr9vi68cz0K"], ["activation_digest", "$2a$10$AuPhlsvEHm/zRFeYRXH2..k88Y/hQxbL4fa5m4MA/yZDHInFE/RO2"], ["activated", true], ["activated_at", 2017-01-16 19:23:55 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-76@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Dandre Nikolaus II"], ["email", "example-76@railstutorial.org"], ["created_at", 2017-01-16 19:23:56 UTC], ["updated_at", 2017-01-16 19:23:56 UTC], ["password_digest", "$2a$10$j6q8wywJhe1cryNeDE16WuHr/qPlmMdjo797F8rgXzyFl7aLlbrmm"], ["activation_digest", "$2a$10$wVOwVsDUps2d1uiUh9rPcexOx/3mMIZSTdGUcVBg.Adqm7doyWLji"], ["activated", true], ["activated_at", 2017-01-16 19:23:56 UTC]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-77@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Shad Roberts"], ["email", "example-77@railstutorial.org"], ["created_at", 2017-01-16 19:23:56 UTC], ["updated_at", 2017-01-16 19:23:56 UTC], ["password_digest", "$2a$10$MMgx8pyPpMeVqQmrUppEY.JEVWuY8xNsuJ6Ez3//aqq2tFkB6jMaK"], ["activation_digest", "$2a$10$xyFqisrkry4wY9hSaBxQOufpxvTCfTbFJOvm5FnSh0ypyi0gD1aKO"], ["activated", true], ["activated_at", 2017-01-16 19:23:56 UTC]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-78@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Dr. Zechariah Runte"], ["email", "example-78@railstutorial.org"], ["created_at", 2017-01-16 19:23:56 UTC], ["updated_at", 2017-01-16 19:23:56 UTC], ["password_digest", "$2a$10$hRibr/.d.9/31lmKs7w7cOjn8iWP.gzeHXUqu5FLPgoVzHTmbE292"], ["activation_digest", "$2a$10$JTDUX3hWO4LAX0aijHGIg.6oOhr3XjYG5rPCnodYLBUEF./VX7Li."], ["activated", true], ["activated_at", 2017-01-16 19:23:56 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-79@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Clint Mayert"], ["email", "example-79@railstutorial.org"], ["created_at", 2017-01-16 19:23:56 UTC], ["updated_at", 2017-01-16 19:23:56 UTC], ["password_digest", "$2a$10$f/5rfZK.eQEVmIZzbH3ZYudc/lP141yO2fDUcuG63zw46UhZkbvB2"], ["activation_digest", "$2a$10$HUor1gbRJQojuD/yy5ML8.RH7PcXrmGNEXoL/jgPwQFTTGgslzOJC"], ["activated", true], ["activated_at", 2017-01-16 19:23:56 UTC]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-80@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Miss Elmer Sauer"], ["email", "example-80@railstutorial.org"], ["created_at", 2017-01-16 19:23:56 UTC], ["updated_at", 2017-01-16 19:23:56 UTC], ["password_digest", "$2a$10$ifWoIgrppR0zXlUW.vrLw.Ib6BcmnTYzsoYwh/uoeo71SQHjONuy6"], ["activation_digest", "$2a$10$V02Xll6rWsLzRpN/AhHbkuWhEK0MbY./kUSC6qWTPStNgubjQhfwa"], ["activated", true], ["activated_at", 2017-01-16 19:23:56 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-81@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Larue Mann"], ["email", "example-81@railstutorial.org"], ["created_at", 2017-01-16 19:23:56 UTC], ["updated_at", 2017-01-16 19:23:56 UTC], ["password_digest", "$2a$10$j/VWA3r2xAK63YycyO4z/.a4TQFiGw0rV1Na6qEo1Q0hB6Ej7Hu6C"], ["activation_digest", "$2a$10$xziCmKhWKk5S.on/LjZ8geoxYxuv9RH7VLDKMPsUBRn0HHLHqbGDy"], ["activated", true], ["activated_at", 2017-01-16 19:23:56 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-82@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Rogers Mosciski III"], ["email", "example-82@railstutorial.org"], ["created_at", 2017-01-16 19:23:57 UTC], ["updated_at", 2017-01-16 19:23:57 UTC], ["password_digest", "$2a$10$MHYDmuhrEeVKtLiwhN7kwew7.Wkqp8dhvNtNPwFnLE7ukP4.w9zHW"], ["activation_digest", "$2a$10$wGnozMfKUMk7Mqjqkxyyge6cyj9U7X8yWw43JakoKizqpsopIikQm"], ["activated", true], ["activated_at", 2017-01-16 19:23:56 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-83@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Jaclyn Considine"], ["email", "example-83@railstutorial.org"], ["created_at", 2017-01-16 19:23:57 UTC], ["updated_at", 2017-01-16 19:23:57 UTC], ["password_digest", "$2a$10$6ZmUMd8J2ylr2DZvH.tmFOO0NkB93Ja9HSzHDEqn8DXWl37Dx1A6e"], ["activation_digest", "$2a$10$gUXIT1uw95HygwjOncT6f.BC9vrqsM3VaAVY7T8knp//usj1vBuVe"], ["activated", true], ["activated_at", 2017-01-16 19:23:57 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-84@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Bessie Douglas"], ["email", "example-84@railstutorial.org"], ["created_at", 2017-01-16 19:23:57 UTC], ["updated_at", 2017-01-16 19:23:57 UTC], ["password_digest", "$2a$10$xob6D5XEhJGbv9ifjTD.POU0v1tPpKl4VzoAX.256A6iXm3Pr43VW"], ["activation_digest", "$2a$10$zuhvonp5KKcT31jxCAQeje5WbivASQ11lq0wMrkuL5EU8QcKMHIqq"], ["activated", true], ["activated_at", 2017-01-16 19:23:57 UTC]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-85@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Nathen Anderson"], ["email", "example-85@railstutorial.org"], ["created_at", 2017-01-16 19:23:57 UTC], ["updated_at", 2017-01-16 19:23:57 UTC], ["password_digest", "$2a$10$PIK2gaBfpUul9.K9jOSZEOIEvJS3ZOW1uY39zeogVPP0PXo5k.PJe"], ["activation_digest", "$2a$10$UKbpcaWJSXkX0kle6RvxGep9mEhfl1pDxGBDj2xtBOVn6x.cCUPY6"], ["activated", true], ["activated_at", 2017-01-16 19:23:57 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-86@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Lilla Rau Jr."], ["email", "example-86@railstutorial.org"], ["created_at", 2017-01-16 19:23:57 UTC], ["updated_at", 2017-01-16 19:23:57 UTC], ["password_digest", "$2a$10$S5r/7wb0e9VThGpRdTazEeSG5a830j0EcNgYdxiy2L62AyYskwh5."], ["activation_digest", "$2a$10$Pom0Pt3Vrgcj8qaH5iw9Ue/wM5PtOjgjZJW7dpoH9Tfe3FF.YlmeO"], ["activated", true], ["activated_at", 2017-01-16 19:23:57 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-87@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Steve Heathcote"], ["email", "example-87@railstutorial.org"], ["created_at", 2017-01-16 19:23:57 UTC], ["updated_at", 2017-01-16 19:23:57 UTC], ["password_digest", "$2a$10$NmVz4mIIwQOPUqmnDjNLme23xbtaLzaY9F2ruwKoYH5JP1lW634lG"], ["activation_digest", "$2a$10$OcjrJ53nNmhIcCa09S0zA.MA/wiUtZkcdiluqqv3SMnOrj6YI5Pby"], ["activated", true], ["activated_at", 2017-01-16 19:23:57 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-88@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Dr. Kari Rice"], ["email", "example-88@railstutorial.org"], ["created_at", 2017-01-16 19:23:57 UTC], ["updated_at", 2017-01-16 19:23:57 UTC], ["password_digest", "$2a$10$eNwO2T5yVQc0UnPEA9qryewhvb2mV29clX3PFMqW7u048ulE0wGaG"], ["activation_digest", "$2a$10$RCIBLp9seO6icya.SzNxVexGImCgg3cE5.OfXP4xuqDdfYCG.pT2a"], ["activated", true], ["activated_at", 2017-01-16 19:23:57 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-89@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Amalia Rohan"], ["email", "example-89@railstutorial.org"], ["created_at", 2017-01-16 19:23:58 UTC], ["updated_at", 2017-01-16 19:23:58 UTC], ["password_digest", "$2a$10$EmhubwCKd3fUqhtrhllWk.zimP.mtCS8uDWsdzECdqYIDjQhzmZ8y"], ["activation_digest", "$2a$10$LEhZNdgTg.a5cgQPw0rykeOIf97bXS3yXrWcOxPr9RGRVt/6pTc6e"], ["activated", true], ["activated_at", 2017-01-16 19:23:57 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-90@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Alfreda Lakin"], ["email", "example-90@railstutorial.org"], ["created_at", 2017-01-16 19:23:58 UTC], ["updated_at", 2017-01-16 19:23:58 UTC], ["password_digest", "$2a$10$2R5fL3CHQcqlpMiuXetCyOmBDjDRWzAnirCJD6IDeqjdoFuczvxF."], ["activation_digest", "$2a$10$O9pTG0Vz.tewOjBr1rrhJO80ku3VILInxq1X4hGR0HpbEDnMJZql2"], ["activated", true], ["activated_at", 2017-01-16 19:23:58 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-91@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Meagan Hills DDS"], ["email", "example-91@railstutorial.org"], ["created_at", 2017-01-16 19:23:58 UTC], ["updated_at", 2017-01-16 19:23:58 UTC], ["password_digest", "$2a$10$bzx9s2pmdYdqOCGKtCudAOxJfry9vqpi.MsUqLR8oRf6SkyMbRdH2"], ["activation_digest", "$2a$10$hJ1CIi8U/9X8VB20i4kD0upaq5S2PAgo8i8FJ/jXkcam0DROeV6vW"], ["activated", true], ["activated_at", 2017-01-16 19:23:58 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-92@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Willis Denesik"], ["email", "example-92@railstutorial.org"], ["created_at", 2017-01-16 19:23:58 UTC], ["updated_at", 2017-01-16 19:23:58 UTC], ["password_digest", "$2a$10$JACa/aQmW/3y97xdaINbyODgL9QwiMxrroahk4oAyXtSNqWWcSyTi"], ["activation_digest", "$2a$10$zZKHhny8f/K8vYKaccIJh.bSHDzDrDiOhFML6HSUx3JBkwG1ykB5S"], ["activated", true], ["activated_at", 2017-01-16 19:23:58 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-93@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Chaim Nitzsche I"], ["email", "example-93@railstutorial.org"], ["created_at", 2017-01-16 19:23:58 UTC], ["updated_at", 2017-01-16 19:23:58 UTC], ["password_digest", "$2a$10$GCp8hOiEfjYH8RMaL9L.DuJAYmVxCwHq8FYeTtQLavYgyuvRLBCP6"], ["activation_digest", "$2a$10$n08turDJn91UCdEf72Eh7umR/Md4l45kEY/MduCL/AqDzut/ScHLO"], ["activated", true], ["activated_at", 2017-01-16 19:23:58 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-94@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Carmen Bashirian"], ["email", "example-94@railstutorial.org"], ["created_at", 2017-01-16 19:23:58 UTC], ["updated_at", 2017-01-16 19:23:58 UTC], ["password_digest", "$2a$10$nhPQJ2qX8WMDfGj/.taWzObv93CeUEjHT/PpVJRl6iu.BDlt/vGU."], ["activation_digest", "$2a$10$FmL.uEqFVOebdqRLc1srhubx3CgeYlNU/vYobkikTAlIJ2t6qhQBy"], ["activated", true], ["activated_at", 2017-01-16 19:23:58 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-95@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Nola Volkman"], ["email", "example-95@railstutorial.org"], ["created_at", 2017-01-16 19:23:58 UTC], ["updated_at", 2017-01-16 19:23:58 UTC], ["password_digest", "$2a$10$ZCxL7BEK3EEmOYhd7hKTxuVaY4oWi2AMv7xNo5oIdyF4nqWnq9/jy"], ["activation_digest", "$2a$10$rRdcu1SKQGxHj96aJI4rN.eyfPFP7XBCvqpH.tmtq9xZdA.eLgFCO"], ["activated", true], ["activated_at", 2017-01-16 19:23:58 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-96@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Nelda Kessler"], ["email", "example-96@railstutorial.org"], ["created_at", 2017-01-16 19:23:59 UTC], ["updated_at", 2017-01-16 19:23:59 UTC], ["password_digest", "$2a$10$3LIg8nxyoJkQpaTqkW72TuQ9In0Uwd2/w5vvyqSD1ZWgLKc9jmQZy"], ["activation_digest", "$2a$10$tnnh4GbUB1f5jjvP0ysxVuUwfhkaluBnrlVi2ijiK9fOLkRJg3Nrq"], ["activated", true], ["activated_at", 2017-01-16 19:23:58 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-97@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Mr. Bud Luettgen"], ["email", "example-97@railstutorial.org"], ["created_at", 2017-01-16 19:23:59 UTC], ["updated_at", 2017-01-16 19:23:59 UTC], ["password_digest", "$2a$10$uu4TepboEMBCbKuMPU0kDuykBsxEoI2So8GqbIoWSrrxodcWuzeAC"], ["activation_digest", "$2a$10$dQL00hjypBgeP5iuzesVK.Cf1WXpT5lYFfJw0B2bjMQHmBmUlBp0i"], ["activated", true], ["activated_at", 2017-01-16 19:23:59 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-98@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Isadore Schmitt"], ["email", "example-98@railstutorial.org"], ["created_at", 2017-01-16 19:23:59 UTC], ["updated_at", 2017-01-16 19:23:59 UTC], ["password_digest", "$2a$10$ZQiHiiD2TsTgayl/PM8e6eQRazdY9VWnCon.rstxKqAAPGKWwf34i"], ["activation_digest", "$2a$10$aqJL7K2TPPO5./R4SaLYpOClQoxsLt/EeKRE2kZGtko5XihiYo5d."], ["activated", true], ["activated_at", 2017-01-16 19:23:59 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "example-99@railstutorial.org"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest", "activated", "activated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Ara Lang"], ["email", "example-99@railstutorial.org"], ["created_at", 2017-01-16 19:23:59 UTC], ["updated_at", 2017-01-16 19:23:59 UTC], ["password_digest", "$2a$10$saLjvLVGtdxnwk6ftVkELeohOI6d6GTZm568EggC1yIUl9x43flZG"], ["activation_digest", "$2a$10$iPH5cy5KDKXRi8UO0UQfbe.Rf5w13jq9fNXy6utwURjPkvGiTCryq"], ["activated", true], ["activated_at", 2017-01-16 19:23:59 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/rails/mailers/user_mailer" for ::1 at 2017-01-16 21:46:42 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"internal"=>true, "path"=>"user_mailer"}
+  Rendering /Users/Jonas/.rvm/gems/ruby-2.3.3/gems/railties-5.0.1/lib/rails/templates/rails/mailers/mailer.html.erb within layouts/application
+  Rendered /Users/Jonas/.rvm/gems/ruby-2.3.3/gems/railties-5.0.1/lib/rails/templates/rails/mailers/mailer.html.erb within layouts/application (5.8ms)
+Completed 200 OK in 370ms (Views: 17.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails/mailers/user_mailer" for ::1 at 2017-01-16 22:04:10 +0100
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"internal"=>true, "path"=>"user_mailer"}
+  Rendering /Users/Jonas/.rvm/gems/ruby-2.3.3/gems/railties-5.0.1/lib/rails/templates/rails/mailers/mailer.html.erb within layouts/application
+  Rendered /Users/Jonas/.rvm/gems/ruby-2.3.3/gems/railties-5.0.1/lib/rails/templates/rails/mailers/mailer.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 9ms (Views: 7.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails/mailers/user_mailer/account_activation" for ::1 at 2017-01-16 22:04:43 +0100
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"internal"=>true, "path"=>"user_mailer/account_activation"}
+UserMailer#account_activation: processed outbound mail in 0.5ms
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms)
+
+
+  
+ArgumentError (wrong number of arguments (given 0, expected 1)):
+  
+app/mailers/user_mailer.rb:3:in `account_activation'
+  Rendering /Users/Jonas/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/Jonas/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/Jonas/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.4ms)
+  Rendering /Users/Jonas/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/Jonas/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendering /Users/Jonas/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/Jonas/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/Jonas/.rvm/gems/ruby-2.3.3/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (65.1ms)
+Started GET "/rails/mailers/user_mailer/account_activation" for ::1 at 2017-01-16 22:05:01 +0100
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"internal"=>true, "path"=>"user_mailer/account_activation"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+UserMailer#account_activation: processed outbound mail in 19.0ms
+  Rendering /Users/Jonas/.rvm/gems/ruby-2.3.3/gems/railties-5.0.1/lib/rails/templates/rails/mailers/email.html.erb
+  Rendered /Users/Jonas/.rvm/gems/ruby-2.3.3/gems/railties-5.0.1/lib/rails/templates/rails/mailers/email.html.erb (1.3ms)
+Completed 200 OK in 33ms (Views: 6.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/rails/mailers/user_mailer/account_activation" for ::1 at 2017-01-16 22:06:04 +0100
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"internal"=>true, "path"=>"user_mailer/account_activation"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+UserMailer#account_activation: processed outbound mail in 0.9ms
+  Rendering /Users/Jonas/.rvm/gems/ruby-2.3.3/gems/railties-5.0.1/lib/rails/templates/rails/mailers/email.html.erb
+  Rendered /Users/Jonas/.rvm/gems/ruby-2.3.3/gems/railties-5.0.1/lib/rails/templates/rails/mailers/email.html.erb (1.3ms)
+Completed 200 OK in 7ms (Views: 4.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rails/mailers/user_mailer/account_activation" for ::1 at 2017-01-16 22:06:06 +0100
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"internal"=>true, "path"=>"user_mailer/account_activation"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+UserMailer#account_activation: processed outbound mail in 0.9ms
+  Rendering /Users/Jonas/.rvm/gems/ruby-2.3.3/gems/railties-5.0.1/lib/rails/templates/rails/mailers/email.html.erb
+  Rendered /Users/Jonas/.rvm/gems/ruby-2.3.3/gems/railties-5.0.1/lib/rails/templates/rails/mailers/email.html.erb (1.1ms)
+Completed 200 OK in 8ms (Views: 5.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rails/mailers/user_mailer/account_activation" for ::1 at 2017-01-16 22:09:36 +0100
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"internal"=>true, "path"=>"user_mailer/account_activation"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendering user_mailer/account_activation.html.erb within layouts/mailer
+  Rendered user_mailer/account_activation.html.erb within layouts/mailer (1.4ms)
+  Rendering user_mailer/account_activation.text.erb within layouts/mailer
+  Rendered user_mailer/account_activation.text.erb within layouts/mailer (0.5ms)
+UserMailer#account_activation: processed outbound mail in 172.1ms
+  Rendering /Users/Jonas/.rvm/gems/ruby-2.3.3/gems/railties-5.0.1/lib/rails/templates/rails/mailers/email.html.erb
+  Rendered /Users/Jonas/.rvm/gems/ruby-2.3.3/gems/railties-5.0.1/lib/rails/templates/rails/mailers/email.html.erb (6.0ms)
+Completed 200 OK in 199ms (Views: 9.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/rails/mailers/user_mailer/account_activation?part=text%2Fhtml" for ::1 at 2017-01-16 22:09:36 +0100
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"part"=>"text/html", "internal"=>true, "path"=>"user_mailer/account_activation"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendering user_mailer/account_activation.html.erb within layouts/mailer
+  Rendered user_mailer/account_activation.html.erb within layouts/mailer (1.3ms)
+  Rendering user_mailer/account_activation.text.erb within layouts/mailer
+  Rendered user_mailer/account_activation.text.erb within layouts/mailer (0.9ms)
+UserMailer#account_activation: processed outbound mail in 33.5ms
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 40ms (Views: 1.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rails/mailers/user_mailer/account_activation?part=text%2Fplain" for ::1 at 2017-01-16 22:09:39 +0100
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"part"=>"text/plain", "internal"=>true, "path"=>"user_mailer/account_activation"}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendering user_mailer/account_activation.html.erb within layouts/mailer
+  Rendered user_mailer/account_activation.html.erb within layouts/mailer (3.4ms)
+  Rendering user_mailer/account_activation.text.erb within layouts/mailer
+  Rendered user_mailer/account_activation.text.erb within layouts/mailer (1.6ms)
+UserMailer#account_activation: processed outbound mail in 49.4ms
+  Rendering text template
+  Rendered text template (0.1ms)
+Completed 200 OK in 66ms (Views: 1.8ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/rails/mailers/user_mailer/account_activation.txt?part=text%2Fhtml" for ::1 at 2017-01-16 22:09:42 +0100
+Processing by Rails::MailersController#preview as TEXT
+  Parameters: {"part"=>"text/html", "internal"=>true, "path"=>"user_mailer/account_activation"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendering user_mailer/account_activation.html.erb within layouts/mailer
+  Rendered user_mailer/account_activation.html.erb within layouts/mailer (3.0ms)
+  Rendering user_mailer/account_activation.text.erb within layouts/mailer
+  Rendered user_mailer/account_activation.text.erb within layouts/mailer (0.9ms)
+UserMailer#account_activation: processed outbound mail in 41.2ms
+  Rendering text template
+  Rendered text template (0.1ms)
+Completed 200 OK in 55ms (Views: 1.9ms | ActiveRecord: 0.9ms)
+
+
+Started DELETE "/logout" for ::1 at 2017-01-16 22:27:27 +0100
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"townUzts06j6E2aeumBtAPZ7kF7/iR2nnkLM+DUyIERVf0hgmWPHXngipHo8gPb9i0x4plssALBGltvEf0OF6g=="}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 13ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/" for ::1 at 2017-01-16 22:27:27 +0100
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (358.2ms)
+  Rendered layouts/_rails_default.html.erb (157.1ms)
+  Rendered layouts/_shim.html.erb (0.9ms)
+  Rendered layouts/_header.html.erb (5.1ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 537ms (Views: 534.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for ::1 at 2017-01-16 22:27:29 +0100
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (0.7ms)
+  Rendered users/_form.html.erb (397.3ms)
+  Rendered users/new.html.erb within layouts/application (400.1ms)
+  Rendered layouts/_rails_default.html.erb (29.7ms)
+  Rendered layouts/_shim.html.erb (0.5ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 452ms (Views: 447.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2017-01-16 22:27:46 +0100
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Uiv/nKuYTHEJ20MXlY5KlAD1elroAXfHQN2fZ45Rzyj/QZAseKZoXu+M/YsXkdiIP4FHgrCsBfgYSCVxiNNlQw==", "user"=>{"name"=>"ok", "email"=>"ok@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create my account"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "ok@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest", "activation_digest") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "ok"], ["email", "ok@gmail.com"], ["created_at", 2017-01-16 21:27:46 UTC], ["updated_at", 2017-01-16 21:27:46 UTC], ["password_digest", "$2a$10$qpqBadjxUVVb9its6vmSKOAGSwjwTEXD5LDed5WfATiRH.lE5IBFW"], ["activation_digest", "$2a$10$1Bom/TPjw99RfdWDaLvhXO6evAD2z7PMHoowze7aIpiIloTwC81Ju"]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  Rendering user_mailer/account_activation.html.erb within layouts/mailer
+  Rendered user_mailer/account_activation.html.erb within layouts/mailer (1.3ms)
+  Rendering user_mailer/account_activation.text.erb within layouts/mailer
+  Rendered user_mailer/account_activation.text.erb within layouts/mailer (0.4ms)
+UserMailer#account_activation: processed outbound mail in 19.6ms
+Sent mail to ok@gmail.com (4.4ms)
+Date: Mon, 16 Jan 2017 22:27:46 +0100
+From: noreply@example.com
+To: ok@gmail.com
+Message-ID: <587d3ad2a66e8_15c63fc9fce6c32c938f5@MacBook-Pro-van-Jonas-3.local.mail>
+Subject: Account activation
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_587d3ad2a5bfd_15c63fc9fce6c32c937c0";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_587d3ad2a5bfd_15c63fc9fce6c32c937c0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Hi ok,
+
+Welcome to the Sample App! Click on the link below to activate your account:
+
+http://localhost:3000/account_activations/KXYZRaKw45KpjLPkZJF7Ng/edit?email=ok%40gmail.com
+
+----==_mimepart_587d3ad2a5bfd_15c63fc9fce6c32c937c0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>Sample App</h1>
+
+<p>Hi ok,</p>
+
+<p>
+  Welcome to the Sample App! Click on the link below to activate your account:
+</p>
+
+<a href="http://localhost:3000/account_activations/KXYZRaKw45KpjLPkZJF7Ng/edit?email=ok%40gmail.com">Activate</a>
+  </body>
+</html>
+
+----==_mimepart_587d3ad2a5bfd_15c63fc9fce6c32c937c0--
+
+Redirected to http://localhost:3000/
+Completed 302 Found in 188ms (ActiveRecord: 2.3ms)
+
+
+Started GET "/" for ::1 at 2017-01-16 22:27:46 +0100
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (1.5ms)
+  Rendered layouts/_rails_default.html.erb (30.9ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+  Rendered layouts/_footer.html.erb (0.8ms)
+Completed 200 OK in 47ms (Views: 45.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/account_activations/KXYZRaKw45KpjLPkZJF7Ng/edit?email=ok%40gmail.com" for ::1 at 2017-01-16 23:18:18 +0100
+Processing by AccountActivationsController#edit as HTML
+  Parameters: {"email"=>"ok@gmail.com", "id"=>"KXYZRaKw45KpjLPkZJF7Ng"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ok@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "users" SET "activated" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["activated", true], ["updated_at", 2017-01-16 22:18:18 UTC], ["id", 101]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = ?, "activated_at" = ? WHERE "users"."id" = ?[0m  [["updated_at", 2017-01-16 22:18:18 UTC], ["activated_at", 2017-01-16 22:18:18 UTC], ["id", 101]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/users/101
+Completed 302 Found in 88ms (ActiveRecord: 3.2ms)
+
+
+Started GET "/users/101" for ::1 at 2017-01-16 23:18:18 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"101"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 101], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_rails_default.html.erb (31.3ms)
+  Rendered layouts/_shim.html.erb (0.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 101], ["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (1.8ms)
+  Rendered layouts/_footer.html.erb (0.6ms)
+Completed 200 OK in 48ms (Views: 45.0ms | ActiveRecord: 0.3ms)
+
+
