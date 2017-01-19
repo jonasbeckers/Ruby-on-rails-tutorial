@@ -153,3 +153,5 @@ bower.json
 /spring/*.pid
 
 # End of https://www.gitignore.io/api/rubymine,ruby,rails
+
+/public/uploads
