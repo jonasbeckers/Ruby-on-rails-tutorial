@@ -14,4 +14,4 @@ The online course/book can be found [here](https://www.railstutorial.org/book)
 - [x] Chapter 11: Account activation
 - [x] Chapter 12: Password reset
 - [x] Chapter 13: User microposts
-- [ ] Chapter 14: Following users
+- [x] Chapter 14: Following users
