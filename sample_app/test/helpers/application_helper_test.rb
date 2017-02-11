@@ -1,5 +1,4 @@
 require 'test_helper'
-require 'action_view/test_case' #not included by default
 
 class ApplicationHelperTest < ActionView::TestCase
 
